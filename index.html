@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ingeniería Innova G&H | Gas Natural Lima</title>
+
+<meta name="description" content="Instalación de gas natural en Lima. Servicio seguro, rápido y garantizado. Cotiza por WhatsApp.">
+<meta name="keywords" content="gas natural Lima, instalación gas, mantenimiento gas">
+<link rel="icon" href="imagenes/logo.jpg">
+
+<!-- 🔥 META PIXEL (REEMPLAZA TU ID) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', 'TU_PIXEL_ID'); 
+fbq('track', 'PageView');
+</script>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(180deg,#001f1f,#003333);
+color:white;
+text-align:center;
+}
+
+/* LOGO */
+.logo{
+width:120px;
+height:120px;
+border-radius:50%;
+background:url("imagenes/logo.jpg") center/cover;
+margin:20px auto;
+box-shadow:0 0 25px #00ffc3;
+}
+
+/* BOTONES */
+.btn{
+background:#00c896;
+padding:12px 25px;
+border-radius:25px;
+display:inline-block;
+margin:15px;
+cursor:pointer;
+}
+
+/* CARRUSEL */
+.carousel{overflow:hidden;}
+.track{
+display:flex;
+animation:scroll 40s linear infinite;
+}
+.track img{
+width:220px;
+height:150px;
+margin:10px;
+border-radius:10px;
+object-fit:cover;
+}
+
+@keyframes scroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+/* CONTADOR */
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin:30px 0;
+font-size:18px;
+}
+.stats span{
+font-size:28px;
+color:#00ffc3;
+font-weight:bold;
+}
+
+/* FORM */
+.form{
+margin-top:40px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+input,textarea{
+width:90%;
+max-width:400px;
+padding:12px;
+margin:6px;
+border-radius:10px;
+border:none;
+}
+
+/* GALERIA */
+#trabajos{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+overflow:auto;
+padding:20px;
+z-index:999;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+gap:10px;
+}
+.grid img{
+width:100%;
+border-radius:10px;
+}
+
+/* BOTON X */
+.close{
+position:fixed;
+top:15px;
+right:15px;
+font-size:30px;
+cursor:pointer;
+background:#00c896;
+padding:5px 12px;
+border-radius:50%;
+}
+
+/* FLOAT */
+.float{
+position:fixed;
+right:15px;
+bottom:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+z-index:999;
+}
+.float a{
+background:#25d366;
+color:white;
+padding:14px;
+border-radius:50%;
+text-decoration:none;
+font-size:18px;
+}
+.fb{
+background:#1877f2 !important;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="logo"></div>
+
+<h1>Ingeniería Innova G&H</h1>
+<p>Instalación de Gas Natural | Proyectos | Mantenimiento</p>
+
+<div class="btn" onclick="abrirTrabajos()">Ver trabajos</div>
+
+<!-- CARRUSEL -->
+<div class="carousel">
+<div class="track" id="track"></div>
+</div>
+
+<!-- CONTADORES -->
+<div class="stats">
+  <div><span id="n1">0</span><br>+150 Proyectos</div>
+  <div><span id="n2">0</span><br>100% Confiable</div>
+  <div><span id="n3">0</span><br>100% Garantía</div>
+</div>
+
+<!-- FORM -->
+<div class="form">
+<h2>Solicitar servicio</h2>
+
+<input id="nombre" placeholder="Nombre">
+<input id="telefono" placeholder="Teléfono">
+<textarea id="mensaje" placeholder="Quiero solicitar instalación de gas natural..."></textarea>
+
+<div class="btn" onclick="enviar()">Enviar</div>
+</div>
+
+<!-- GALERIA -->
+<div id="trabajos">
+<div class="close" onclick="cerrarTrabajos()">✖</div>
+<h2>Trabajos realizados</h2>
+<div class="grid" id="galeria"></div>
+</div>
+
+<!-- BOTONES -->
+<div class="float">
+<a onclick="whatsappClick()" target="_blank">💬</a>
+<a href="https://www.facebook.com/Ingenieriainnovagyh" target="_blank" class="fb">📘</a>
+</div>
+
+<script>
+
+/* CARGAR IMAGENES */
+let track = document.getElementById("track");
+let galeria = document.getElementById("galeria");
+
+for(let i=1;i<=30;i++){
+let ruta = "imagenes/daniel"+i+".jpg";
+
+let img = document.createElement("img");
+img.src = ruta;
+track.appendChild(img);
+
+let img2 = document.createElement("img");
+img2.src = ruta;
+track.appendChild(img2);
+
+let g = document.createElement("img");
+g.src = ruta;
+galeria.appendChild(g);
+}
+
+/* abrir/cerrar */
+function abrirTrabajos(){
+document.getElementById("trabajos").style.display="block";
+}
+function cerrarTrabajos(){
+document.getElementById("trabajos").style.display="none";
+}
+
+/* 🔥 WHATSAPP CON TRACKING */
+function whatsappClick(){
+let texto=`Hola 👋, quiero solicitar un servicio de gas natural
+
+📍 Estoy interesado en una cotización`;
+
+fbq('track', 'Lead'); // evento marketing
+
+window.open("https://wa.me/51921639745?text="+encodeURIComponent(texto),"_blank");
+}
+
+/* FORM */
+function enviar(){
+let n=nombre.value;
+let t=telefono.value;
+let m=mensaje.value;
+
+if(!n || !t){
+alert("Completa los datos");
+return;
+}
+
+let texto=`Hola 👋, quiero solicitar un servicio
+Nombre: ${n}
+Teléfono: ${t}
+Mensaje: ${m}`;
+
+fbq('track', 'Contact');
+
+window.open("https://wa.me/51921639745?text="+encodeURIComponent(texto));
+}
+
+/* CONTADOR */
+function animar(id, fin, sufijo){
+let n = 0;
+let intervalo = setInterval(()=>{
+n++;
+document.getElementById(id).innerText = n + sufijo;
+if(n >= fin) clearInterval(intervalo);
+},20);
+}
+
+animar("n1",150,"+");
+animar("n2",100,"%");
+animar("n3",100,"%");
+
+</script>
+
+</body>
+</html>
